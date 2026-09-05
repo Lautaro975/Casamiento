@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Alas -->
+  <path d="M 88 70 L 15 115 L 15 130 L 88 105 Z" fill="#B0BEC5"/>
+  <path d="M 112 70 L 185 115 L 185 130 L 112 105 Z" fill="#B0BEC5"/>
+
+  <!-- Motores -->
+  <rect x="45" y="100" width="10" height="25" rx="4" fill="#78909C"/>
+  <rect x="145" y="100" width="10" height="25" rx="4" fill="#78909C"/>
+
+  <!-- Estabilizadores horizontales (cola) -->
+  <path d="M 95 155 L 45 175 L 45 185 L 95 170 Z" fill="#B0BEC5"/>
+  <path d="M 105 155 L 155 175 L 155 185 L 105 170 Z" fill="#B0BEC5"/>
+
+  <!-- Fuselaje -->
+  <path d="M 88 40 C 88 5, 112 5, 112 40 L 112 160 C 112 195, 88 195, 88 160 Z" fill="#ECEFF1"/>
+
+  <!-- Cabina -->
+  <ellipse cx="100" cy="28" rx="7" ry="12" fill="#90CAF9"/>
+
+  <!-- Estabilizador vertical (visto desde arriba) -->
+  <rect x="98" y="155" width="4" height="35" rx="2" fill="#90A4AE"/>
+</svg>

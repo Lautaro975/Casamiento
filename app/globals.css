@@ -3,13 +3,33 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Contenedores y espaciados */
+  --wrapper-max: 120rem;
+  /* 1200px */
+  --wrapper-padding: 2rem;
+  /* 20px en mobile */
+  --gap-sm: 1.6rem;
+  /* 16px */
+  --gap-md: 2.4rem;
+  /* 24px */
+  --gap-lg: 4rem;
+  /* 40px */
+  --color-accent: #5B6236;
+  --color-hero: #F5F0E6;
+  --color-surface: #FAF7F0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--color-accent);
+  --color-hero: var(--color-hero);
+  --color-surface: var(--color-surface);
   --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-eb-garamond);
   --font-mono: var(--font-geist-mono);
+  --font-allura: var(--font-allura);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +39,442 @@
   }
 }
 
+/* Base: 1rem = 10px */
+html {
+  font-size: 62.5%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-size: 1.6rem;
+  /* 16px base de lectura */
+  line-height: 1.5;
+}
+
+/* Wrapper reutilizable */
+.wrapper {
+  width: 100%;
+  max-width: var(--wrapper-max);
+  margin-inline: auto;
+  padding-inline: var(--wrapper-padding);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --wrapper-padding: 4rem;
+    /* 40px en desktop */
+  }
+}
+
+/* Tipografía base */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-allura), cursive;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.hero-title {
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  white-space: nowrap;
+  font-size: clamp(3.8rem, 10.5vw, 8.4rem);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+@media (min-width: 768px) {
+  .hero-eyebrow {
+    font-size: 1.8rem;
+  }
+}
+
+.hero-divider {
+  width: 4.8rem;
+  height: 1px;
+  margin-inline: auto;
+  background-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+.hero-surface {
+  background-color: var(--color-hero);
+}
+
+.content-surface {
+  background-color: var(--color-surface);
+}
+
+.surface-blend {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 15;
+  height: 14rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--color-surface) 40%, transparent) 50%,
+      var(--color-surface) 100%);
+}
+
+@media (max-width: 767px) {
+  .hero-mobile-glow {
+    color: #171717;
+  }
+
+  .hero-mobile-glow .hero-eyebrow {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-shadow:
+      0 0 12px rgba(245, 240, 230, 0.95),
+      0 0 24px rgba(245, 240, 230, 0.85),
+      0 1px 4px rgba(91, 98, 54, 0.45);
+  }
+
+  .hero-mobile-glow .hero-letter,
+  .hero-mobile-glow .hero-word,
+  .hero-mobile-glow .hero-date-line {
+    color: #171717;
+    font-weight: 500;
+    text-shadow:
+      0 0 14px rgba(245, 240, 230, 1),
+      0 0 28px rgba(245, 240, 230, 1),
+      0 0 42px rgba(245, 240, 230, 0.95),
+      0 1px 3px rgba(23, 23, 23, 0.35),
+      0 2px 10px rgba(245, 240, 230, 1);
+  }
+
+  .hero-mobile-glow .hero-letter {
+    font-weight: 600;
+  }
+
+  .hero-mobile-glow .hero-divider {
+    box-shadow: 0 0 16px 4px rgba(245, 240, 230, 0.95);
+  }
+
+  .hero-mobile-glow .hero-plane {
+    filter: drop-shadow(0 0 10px rgba(245, 240, 230, 0.95)) drop-shadow(0 0 20px rgba(245, 240, 230, 0.85));
+  }
+}
+
+/* Jerarquía tipográfica (Mobile First) */
+h1:not(.hero-title):not(.countdown-title):not(.event-title) {
+  font-size: 5.6rem;
+}
+
+/* 38px */
+h2 {
+  font-size: 4rem;
+}
+
+/* 30px */
+h3 {
+  font-size: 3rem;
+}
+
+/* 24px */
+h4 {
+  font-size: 2rem;
+}
+
+/* 20px */
+h5 {
+  font-size: 1rem;
+}
+
+/* 16px */
+h6 {
+  font-size: 0.5rem;
+}
+
+/* 12px */
+
+/* Pantallas grandes (Desktop >= 768px) */
+@media (min-width: 768px) {
+  h1:not(.hero-title):not(.countdown-title):not(.event-title) {
+    font-size: 9rem;
+  }
+
+  /* 60px */
+  h2 {
+    font-size: 7rem;
+  }
+
+  /* 40px */
+  h3 {
+    font-size: 5rem;
+  }
+
+  /* 30px */
+}
+
+/* Clases de párrafo */
+.p1,
+.p2,
+.p3 {
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.p1 {
+  font-size: 1.8rem;
+}
+
+/* 18px */
+.p2 {
+  font-size: 1.6rem;
+}
+
+/* 16px */
+.p3 {
+  font-size: 1.4rem;
+}
+
+/* 14px */
+
+/* Utilidades para Flexbox/Grid Gaps */
+.gap-sm {
+  gap: var(--gap-sm);
+}
+
+.gap-md {
+  gap: var(--gap-md);
+}
+
+.gap-lg {
+  gap: var(--gap-lg);
+}
+
+.gap-responsive {
+  gap: var(--gap-sm);
+}
+
+@media (min-width: 768px) {
+  .gap-responsive {
+    gap: var(--gap-lg);
+  }
+}
+
+/* Card con fade para ocultar suavemente el avión al pasar por detrás */
+.plane-fade-card {
+  --plane-fade-bg: var(--color-surface);
+  --plane-fade-size: 5.6rem;
+
+  position: relative;
+  z-index: 20;
+  isolation: isolate;
+  overflow: visible;
+  background-color: #ffffff;
+  color: #171717;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 18%, transparent);
+  border-radius: 1.6rem;
+  padding: var(--gap-lg) var(--gap-md);
+}
+
+.countdown-card .countdown-title {
+  white-space: nowrap;
+  font-size: clamp(3.4rem, 11vw, 5.6rem);
+  line-height: 1.1;
+  color: #171717;
+}
+
+.countdown-card .countdown-title .letter {
+  color: inherit;
+}
+
+.countdown-card .countdown-subtitle,
+.countdown-card .countdown-subtitle-word {
+  color: #171717;
+}
+
+.countdown-card .countdown-number {
+  color: var(--color-accent);
+}
+
+.countdown-card .countdown-label {
+  color: #64748b;
+}
+
+.event-card {
+  background-color: color-mix(in srgb, var(--color-accent) 14%, var(--color-hero));
+  border: 1px solid color-mix(in srgb, var(--color-accent) 32%, transparent);
+  box-shadow:
+    0 10px 28px color-mix(in srgb, var(--color-accent) 10%, transparent),
+    inset 0 1px 0 color-mix(in srgb, white 55%, transparent);
+}
+
+.event-card .event-title {
+  white-space: nowrap;
+  font-size: clamp(3.2rem, 10vw, 5.6rem);
+  line-height: 1.1;
+  color: #171717;
+}
+
+.event-card .event-title .letter {
+  color: inherit;
+}
+
+.event-card .event-label {
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.event-card .event-date {
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.35;
+  color: #171717;
+}
+
+.event-card .event-time {
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-size: 1.8rem;
+  color: #171717;
+}
+
+.event-card .event-venue-name {
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.event-card .event-address {
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.event-button {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-height: 4.8rem;
+  padding: 1.2rem 2rem;
+  border-radius: 9999px;
+  font-family: var(--font-eb-garamond), "Times New Roman", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+  background-color: #ffffff;
+  color: var(--color-accent);
+  box-shadow:
+    0 2px 8px color-mix(in srgb, var(--color-accent) 12%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--color-accent) 18%, transparent);
+}
+
+.event-button__label {
+  white-space: nowrap;
+}
+
+.event-button__icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.event-button:hover {
+  transform: translateY(-2px);
+  background-color: color-mix(in srgb, white 88%, var(--color-accent));
+  box-shadow:
+    0 6px 18px color-mix(in srgb, var(--color-accent) 22%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--color-accent) 24%, transparent);
+}
+
+.event-button:hover .event-button__icon {
+  transform: scale(1.08);
+}
+
+.event-button:active {
+  transform: translateY(0);
+}
+
+.event-button--maps {
+  background-color: color-mix(in srgb, var(--color-accent) 88%, #171717);
+  color: #ffffff;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--color-accent) 22%, transparent);
+}
+
+.event-button--maps:hover {
+  background-color: color-mix(in srgb, var(--color-accent) 72%, #171717);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--color-accent) 34%, transparent);
+}
+
+.plane-fade-card__veil {
+  position: absolute;
+  top: calc(-1 * var(--plane-fade-size));
+  right: calc(-1 * var(--plane-fade-size) * 0.5);
+  bottom: calc(-1 * var(--plane-fade-size) * 0.5);
+  left: calc(-1 * var(--plane-fade-size) * 0.5);
+  z-index: 0;
+  pointer-events: none;
+  border-radius: calc(1.6rem + var(--plane-fade-size) * 0.35);
+  background-image:
+    linear-gradient(to bottom, transparent, var(--plane-fade-bg)),
+    linear-gradient(to top, transparent, var(--plane-fade-bg)),
+    linear-gradient(to right, transparent, var(--plane-fade-bg)),
+    linear-gradient(to left, transparent, var(--plane-fade-bg));
+  background-repeat: no-repeat;
+  background-size:
+    100% var(--plane-fade-size),
+    100% calc(var(--plane-fade-size) * 0.5),
+    calc(var(--plane-fade-size) * 0.5) 100%,
+    calc(var(--plane-fade-size) * 0.5) 100%;
+  background-position: top, bottom, left, right;
+  mask-image: radial-gradient(
+    ellipse 115% 115% at 50% 50%,
+    black 55%,
+    transparent 100%
+  );
+}
+
+.plane-fade-card__content {
+  position: relative;
+  z-index: 1;
+}
+
+.countdown-tiles {
+  perspective: 1400px;
+}
+
+.countdown-tile {
+  overflow: hidden;
+  border-radius: 1.6rem;
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--color-accent) 6%, transparent),
+    inset 0 1px 0 color-mix(in srgb, white 40%, transparent);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
 }
