@@ -14,7 +14,7 @@ type MobileHeroPhotosProps = {
 
 const PHOTO_LAYOUT = [
   {
-    position: "top-[10%] left-[20%]",
+    position: "top-[5%] left-[20%]",
     rotation: "-rotate-[11deg]",
     parallaxY: 90,
     parallaxX: 18,
@@ -38,8 +38,8 @@ const PHOTO_LAYOUT = [
     entranceY: 16,
   },
   {
-    position: "top-[9%] -right-[10%]",
-    rotation: "-rotate-[10deg]",
+    position: "top-[5%] right-[10%]",
+    rotation: "rotate-[10deg]",
     parallaxY: 95,
     parallaxX: -26,
     entranceX: 56,
@@ -137,7 +137,7 @@ export default function MobileHeroPhotos({ items }: MobileHeroPhotosProps) {
   return (
     <div
       ref={containerRef}
-      className="pointer-events-none absolute inset-0 z-10 overflow-hidden md:hidden"
+      className="pointer-events-none absolute inset-0 z-10 md:hidden"
       aria-hidden
     >
       {photos.map((photo, index) => (

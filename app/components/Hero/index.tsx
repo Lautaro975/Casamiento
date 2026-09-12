@@ -3,10 +3,9 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
 gsap.registerPlugin(useGSAP);
 
-const TITLE = "Estefy & Debora";
+const TITLE = "Las Churris";
 const DESCRIPTION =
     "Tenemos una historia que celebrar y nos encantaría compartirla contigo";
 
@@ -32,15 +31,6 @@ const Hero = () => {
                         ease: "back.out(1.7)",
                     },
                     "-=0.35",
-                )
-                .from(
-                    ".hero-plane",
-                    {
-                        x: -20,
-                        opacity: 0,
-                        duration: 0.6,
-                    },
-                    "-=0.4",
                 )
                 .from(
                     ".hero-word",
@@ -83,7 +73,7 @@ const Hero = () => {
         >
             <p className="hero-eyebrow mb-4 md:mb-6">Nos casamos</p>
 
-            <div className="flex max-w-full flex-nowrap items-center justify-center gap-3 sm:gap-8 lg:gap-16 my-2 lg:my-0">
+            <div className="flex max-w-full flex-nowrap items-center justify-center gap-4 sm:gap-10 lg:gap-14 my-2 lg:my-0">
                 <h1 className="hero-title font-serif! m-0 shrink-0">
                     {TITLE.split("").map((char, index) => (
                         <span
@@ -96,7 +86,7 @@ const Hero = () => {
                 </h1>
                 <span
                     data-plane-start
-                    className="hero-plane h-8 w-8 sm:h-14 sm:w-14 lg:h-16 lg:w-16 inline-block shrink-0"
+                    className="inline-block shrink-0 size-8 sm:size-14 lg:size-16 ml-2 sm:ml-4 lg:ml-6"
                     aria-hidden
                 />
             </div>
@@ -116,8 +106,8 @@ const Hero = () => {
 
 
             <div className=" flex flex-col gap-1">
-                <p className="p2 hero-date-line">Sábado 14 de noviembre de 2026</p>
-                <p className="p3 hero-date-line">20:30 hs · Mar del Plata</p>
+                <p className="p2 hero-date-line">Sábado 12 de diciembre de 2026</p>
+                <p className="p3 hero-date-line">19 hs · Mar del Plata</p>
             </div>
         </section>
     );

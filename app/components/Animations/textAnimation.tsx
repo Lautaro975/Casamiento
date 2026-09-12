@@ -20,7 +20,7 @@ export const AnimatedParagraph = ({ text, className = "", id }: AnimatedParagrap
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top 85%",
-        toggleActions: "play none none reverse",
+        once: true,
       },
       y: 10,
       opacity: 0,
@@ -30,18 +30,28 @@ export const AnimatedParagraph = ({ text, className = "", id }: AnimatedParagrap
     });
   }, { scope: containerRef });
 
+  const lines = text.split("\n");
+
   return (
     <p ref={containerRef} id={id} className={className} style={{ lineHeight: 1.6 }}>
-      {text.split(" ").map((word, index) => (
-        <span
-          key={index}
-          className="word"
-          style={{
-            display: 'inline-block', // Permite transformar cada palabra
-            marginRight: '0.25em'    // Espaciado entre palabras
-          }}
-        >
-          {word}
+      {lines.map((line, lineIndex) => (
+        <span key={lineIndex} style={{ display: "block" }}>
+          {line
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean)
+            .map((word, wordIndex) => (
+              <span
+                key={`${lineIndex}-${wordIndex}`}
+                className="word"
+                style={{
+                  display: "inline-block",
+                  marginRight: "0.25em",
+                }}
+              >
+                {word}
+              </span>
+            ))}
         </span>
       ))}
     </p>

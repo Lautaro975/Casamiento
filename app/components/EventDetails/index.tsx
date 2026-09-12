@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { EVENT_DETAILS } from "../../../constants/eventDetails";
 import { AnimatedParagraph } from "../Animations/textAnimation";
 import { AnimatedTitle } from "../Animations/titleAnimation";
+import EventButton from "../EventButton";
 import { CalendarIcon, MapPinIcon } from "./icons";
 
 const EventDetails = () => {
@@ -13,12 +13,14 @@ const EventDetails = () => {
             aria-labelledby="event-details-title"
         >
             <div className="plane-fade-card event-card">
-                <div className="plane-fade-card__veil" aria-hidden="true" />
                 <div className="plane-fade-card__content flex flex-col items-center gap-10 sm:gap-12 text-center">
                     <div className="w-full">
                         <AnimatedTitle
                             text={EVENT_DETAILS.title}
                             className="event-title font-serif!"
+                            y={16}
+                            stagger={0.02}
+                            ease="power2.out"
                         />
                         <AnimatedParagraph
                             id="event-details-title"
@@ -49,28 +51,19 @@ const EventDetails = () => {
                     </div>
 
                     <div className="flex w-full max-w-lg flex-col gap-4 sm:flex-row sm:justify-center">
-                        <Link
+                        <EventButton
                             href={EVENT_DETAILS.calendarUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            prefetch={false}
-                            className="event-button"
-                        >
-                            <CalendarIcon className="event-button__icon" />
-                            <span className="event-button__label">Agendar la fecha</span>
-                            <span className="sr-only"> (Google Calendar)</span>
-                        </Link>
-                        <Link
+                            label="Agendar la fecha"
+                            icon={<CalendarIcon className="event-button__icon" />}
+                            srSuffix=" (Google Calendar)"
+                        />
+                        <EventButton
                             href={EVENT_DETAILS.mapsUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            prefetch={false}
-                            className="event-button event-button--maps"
-                        >
-                            <MapPinIcon className="event-button__icon" />
-                            <span className="event-button__label">Cómo llegar</span>
-                            <span className="sr-only"> (Google Maps)</span>
-                        </Link>
+                            label="Cómo llegar"
+                            variant="maps"
+                            icon={<MapPinIcon className="event-button__icon" />}
+                            srSuffix=" (Google Maps)"
+                        />
                     </div>
                 </div>
             </div>

@@ -1,22 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
-  <!-- Alas -->
-  <path d="M 88 70 L 15 115 L 15 130 L 88 105 Z" fill="#B0BEC5"/>
-  <path d="M 112 70 L 185 115 L 185 130 L 112 105 Z" fill="#B0BEC5"/>
-
-  <!-- Motores -->
-  <rect x="45" y="100" width="10" height="25" rx="4" fill="#78909C"/>
-  <rect x="145" y="100" width="10" height="25" rx="4" fill="#78909C"/>
-
-  <!-- Estabilizadores horizontales (cola) -->
-  <path d="M 95 155 L 45 175 L 45 185 L 95 170 Z" fill="#B0BEC5"/>
-  <path d="M 105 155 L 155 175 L 155 185 L 105 170 Z" fill="#B0BEC5"/>
-
-  <!-- Fuselaje -->
-  <path d="M 88 40 C 88 5, 112 5, 112 40 L 112 160 C 112 195, 88 195, 88 160 Z" fill="#ECEFF1"/>
-
-  <!-- Cabina -->
-  <ellipse cx="100" cy="28" rx="7" ry="12" fill="#90CAF9"/>
-
-  <!-- Estabilizador vertical (visto desde arriba) -->
-  <rect x="98" y="155" width="4" height="35" rx="2" fill="#90A4AE"/>
+<svg width="600" height="800" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wingLeft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#737B47"/>
+      <stop offset="50%" stop-color="#5B6236"/>
+      <stop offset="100%" stop-color="#454B28"/>
+    </linearGradient>
+    <linearGradient id="wingRight" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#78804A"/>
+      <stop offset="50%" stop-color="#5B6236"/>
+      <stop offset="100%" stop-color="#454B28"/>
+    </linearGradient>
+    <linearGradient id="center" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#697142"/>
+      <stop offset="45%" stop-color="#51582F"/>
+      <stop offset="52%" stop-color="#353B20"/>
+      <stop offset="100%" stop-color="#626A3C"/>
+    </linearGradient>
+    <linearGradient id="shadowLeft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#343A20" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#292E19" stop-opacity=".7"/>
+    </linearGradient>
+    <linearGradient id="shadowRight" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#343A20" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#292E19" stop-opacity=".7"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dy="10"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope=".25"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#softShadow)">
+    <path d="M300 35 L55 565 L115 625 L265 535 L300 765 Z" fill="url(#wingLeft)"/>
+    <path d="M300 35 L265 535 L300 765 L300 35 Z" fill="url(#shadowLeft)"/>
+    <path d="M300 35 L545 565 L485 625 L335 535 L300 765 Z" fill="url(#wingRight)"/>
+    <path d="M300 35 L335 535 L300 765 L300 35 Z" fill="url(#shadowRight)"/>
+    <path d="M300 35 L325 505 L300 765 L275 505 Z" fill="url(#center)"/>
+    <path d="M300 35 L310 500 L300 735 L292 500 Z" fill="#292E19" opacity=".65"/>
+    <path d="M55 565 L115 625 L265 535 L250 515 Z" fill="#3D4323" opacity=".75"/>
+    <path d="M545 565 L485 625 L335 535 L350 515 Z" fill="#3D4323" opacity=".75"/>
+    <path d="M300 35 L75 555 L265 515 Z" fill="#8A925A" opacity=".10"/>
+    <path d="M300 35 L525 555 L335 515 Z" fill="#929A60" opacity=".08"/>
+  </g>
 </svg>

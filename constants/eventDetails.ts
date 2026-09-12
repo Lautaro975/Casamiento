@@ -5,7 +5,7 @@ const CALENDAR_LOCATION =
 const calendarParams = new URLSearchParams({
     action: "TEMPLATE",
     text: CALENDAR_TITLE,
-    dates: "20261114T203000/20261115T053000",
+    dates: "20261212T190000/20261213T030000",
     details: "La celebración",
     location: CALENDAR_LOCATION,
     ctz: "America/Argentina/Buenos_Aires",
@@ -19,8 +19,8 @@ const mapsParams = new URLSearchParams({
 export const EVENT_DETAILS = {
     title: "Dónde y cuándo",
     celebration: "La celebración",
-    dateLabel: "Sábado, 14 de noviembre de 2026",
-    time: "20:30 a 05:30 hs",
+    dateLabel: "Sábado, 12 de diciembre de 2026",
+    time: "19 p.m a 3 a.m (Puntualidad)",
     venue: "Perpiñan Eventos",
     address: "Av. Pedro Luro 10820, B7600 Mar del Plata, Provincia de Buenos Aires",
     calendarUrl: `https://calendar.google.com/calendar/render?${calendarParams.toString()}`,

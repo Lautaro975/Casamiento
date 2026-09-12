@@ -22,7 +22,7 @@ const AnimatedSubtitle = ({ text, className = "", id }: AnimatedSubtitleProps) =
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: "top 85%",
-                    toggleActions: "play none none reverse",
+                    once: true,
                 },
                 y: 16,
                 opacity: 0,
