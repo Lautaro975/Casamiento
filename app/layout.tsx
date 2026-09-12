@@ -4,14 +4,22 @@ import { SEO } from "../constants/seo";
 import "./globals.css";
 
 function getMetadataBase(): URL {
-  if (process.env.NEXT_PUBLIC_SITE_URL) {
-    return new URL(process.env.NEXT_PUBLIC_SITE_URL);
+  const candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+  ];
+
+  for (const raw of candidates) {
+    if (!raw?.trim()) continue;
+    const withProtocol = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+    return new URL(withProtocol);
   }
-  if (process.env.VERCEL_URL) {
-    return new URL(`https://${process.env.VERCEL_URL}`);
-  }
+
   return new URL("http://localhost:3000");
 }
+
+const siteUrl = getMetadataBase();
 
 const allura = Allura({
   weight: "400",
@@ -37,7 +45,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: getMetadataBase(),
+  metadataBase: siteUrl,
   title: SEO.title,
   description: SEO.description,
   openGraph: {
@@ -45,18 +53,12 @@ export const metadata: Metadata = {
     description: SEO.description,
     type: "website",
     locale: "es_AR",
-    images: [
-      {
-        url: SEO.ogImage,
-        alt: SEO.ogImageAlt,
-      },
-    ],
+    url: siteUrl,
   },
   twitter: {
     card: "summary_large_image",
     title: SEO.title,
     description: SEO.description,
-    images: [SEO.ogImage],
   },
 };
 
