@@ -41,18 +41,29 @@ export const AnimatedTitle = ({
     });
   }, { scope: containerRef });
 
+  const words = text.split(/\s+/).filter(Boolean);
+
   return (
     <h1 ref={containerRef} id={id} className={className} style={{ margin: 0 }}>
-      {text.split("").map((char: string, index: number) => (
+      {words.map((word, wordIndex) => (
         <span
-          key={index}
-          className="letter"
-          style={{ 
-            display: 'inline-block',
-            whiteSpace: 'pre' 
+          key={wordIndex}
+          className="title-word"
+          style={{
+            display: "inline-block",
+            whiteSpace: "nowrap",
+            marginRight: wordIndex < words.length - 1 ? "0.25em" : undefined,
           }}
         >
-          {char === " " ? "\u00A0" : char}
+          {word.split("").map((char, charIndex) => (
+            <span
+              key={charIndex}
+              className="letter"
+              style={{ display: "inline-block" }}
+            >
+              {char}
+            </span>
+          ))}
         </span>
       ))}
     </h1>

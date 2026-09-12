@@ -15,14 +15,14 @@ type MobileHeroPhotosProps = {
 const PHOTO_LAYOUT = [
   {
     position: "top-[5%] left-[20%]",
-    rotation: "-rotate-[11deg]",
+    rotation: "rotate-[11deg]",
     parallaxY: 90,
     parallaxX: 18,
     entranceX: -48,
     entranceY: -24,
   },
   {
-    position: "top-[20%] left-[70%]",
+    position: "top-[2%] left-[60%]",
     rotation: "rotate-[13deg]",
     parallaxY: 70,
     parallaxX: -22,
@@ -38,7 +38,7 @@ const PHOTO_LAYOUT = [
     entranceY: 16,
   },
   {
-    position: "top-[5%] right-[10%]",
+    position: "top-[20%] right-[0%]",
     rotation: "rotate-[10deg]",
     parallaxY: 95,
     parallaxX: -26,
