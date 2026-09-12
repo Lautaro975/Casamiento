@@ -7,7 +7,7 @@ export function buildWhatsAppUrl(phone: string, dietaryLabel: string) {
 export const RSVP = {
     title: "Tu presencia es nuestro mejor regalo.",
     subtitle:
-        "Ayúdanos a preparar cada detalle confirmando antes del 15 de octubre. \nEsta invitación fue pensada especialmente para vos.",
+        "Ayúdanos a preparar cada detalle confirmando antes del 15 de octubre. Esta invitación fue pensada especialmente para vos.",
     contacts: [
         {
             label: "Confirmar con Estefy",

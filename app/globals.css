@@ -463,7 +463,7 @@ h6 {
 }
 
 .rsvp-card .rsvp-title {
-  font-size: clamp(2.2rem, 5.5vw, 3rem);
+  font-size: clamp(2.55rem, 7vw, 2.9rem);
   font-weight: 500;
   line-height: 1.3;
   color: #171717;
@@ -473,6 +473,7 @@ h6 {
 
 @media (min-width: 640px) {
   .rsvp-card .rsvp-title {
+    font-size: clamp(2.2rem, 5.5vw, 3rem);
     max-width: none;
   }
 }
@@ -491,11 +492,18 @@ h6 {
 
 .rsvp-card .rsvp-subtitle {
   font-family: var(--font-eb-garamond), "Times New Roman", serif;
-  font-size: clamp(1.6rem, 3.5vw, 1.9rem);
-  line-height: 1.65;
-  color: #64748b;
+  font-size: clamp(1.15rem, 3.1vw, 1.3rem);
+  line-height: 1.55;
+  color: #171717;
   max-width: none;
   margin: 0;
+}
+
+@media (min-width: 640px) {
+  .rsvp-card .rsvp-subtitle {
+    font-size: clamp(1.6rem, 3.5vw, 1.9rem);
+    line-height: 1.65;
+  }
 }
 
 .rsvp-invitation {
